@@ -277,6 +277,10 @@ ul {
         font-weight: 700;
         font-size: 0.875em;
         margin: 0;
+        a {
+            color: $colour_black;
+            font-size: 1em;
+        }
     }
     a {
         color: $colour_dark_grey;
