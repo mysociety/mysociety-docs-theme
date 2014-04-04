@@ -805,8 +805,8 @@ table.table td {
         font-size: 0.75em;
         &:after {
             content: '/';
-            margin: 0 0.25em;
-            color: $colour_dark_grey
+            margin: 0 0.33em;
+            color: $colour_light_grey;
         }
         a {
             color: $colour_dark_grey
