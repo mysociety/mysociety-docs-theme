@@ -127,7 +127,7 @@ ul {
 
 /* To avoid floaty footer, make background footer colour */
 .page-wrapper {
-    background: $colour_light_grey;
+    background: $colour_background;
     float: left;
     width: 100%;
 }
@@ -524,7 +524,7 @@ table.table td {
 
 /* examples benefit from full-width (because they're often code snippets) */
 .glossary .more-info ul.examples {
-   clear: both; 
+   clear: both;
    padding-top: 0.666em;
    margin-left: 0em;
 }
