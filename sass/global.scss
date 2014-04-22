@@ -91,6 +91,15 @@ code {
     padding: 0 0.2em;
 }
 
+// special case: it's better if code inside links is still coloured
+// as a link: this is especially useful for links to things like config
+// settings because markdown handles [`text`](link) as intended, but the
+// other way -- `[text](link)` -- becomes literal code, with no link.
+a code {
+  border-color: none;
+  color: inherit;
+}
+
 pre {
     display: block;
     white-space: pre-wrap;
