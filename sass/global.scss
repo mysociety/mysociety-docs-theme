@@ -541,10 +541,6 @@ table.table td {
    padding-top: 0.666em;
    margin-left: 0em;
 }
-/* <pre> currently used in .glossary <dl>s, needs text color fix... might be general problem? */
-.glossary pre {
-  color: $colour_light_grey;
-}
 
 .homepage-feature {
     @include clearfix;
