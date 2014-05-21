@@ -829,8 +829,11 @@ table.table td {
 /**
  * Owl Additions
  */
-
-.owl-carousel {
+// avoiding-own-controls leaves space to the right to not collide with the prev/next buttons
+.owl-carousel p.avoiding-owl-controls {
+  margin-right: $base-spacing-unit * 3;
+}
+.homepage-feature .owl-carousel {
     // Push the caption down under the monitor
     .owl__gap {
         float: left;
@@ -854,9 +857,11 @@ table.table td {
     // Move the buttons up, compensating for the caption pushing and then some
     position: relative;
     top: -70px;
-    @media (min-width: $monitor_breakpoint) {
-        right: -20px;
-        top: -130px;
+    .homepage-feature & {
+      @media (min-width: $monitor_breakpoint) {
+          right: -20px;
+          top: -130px;
+      }
     }
     @extend .unstyled;
     .owl-next,
@@ -884,3 +889,4 @@ table.table td {
         border-radius: 0 3px 3px 0;
     }
 }
+
