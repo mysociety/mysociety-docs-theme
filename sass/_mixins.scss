@@ -87,7 +87,8 @@
 }
 
 @mixin grid-column--one-of-one {
-    @include grid-column-equal;
+    float: left;
+    padding: 0;
     width: 100%;
 }
 
