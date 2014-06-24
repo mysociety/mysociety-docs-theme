@@ -546,6 +546,29 @@ table.table td {
    margin-left: 0em;
 }
 
+.glossary__link {
+    display: inline-block;
+    color: $colour_dark_grey;
+    text-decoration: underline;
+    position: relative;
+    padding-left: .5em;
+    &:before {
+        content: '#';
+        opacity: 0.5;
+        text-decoration: none;
+        position: absolute;
+        left: 0;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        color: $colour_black;
+        &:before {
+            opacity: 1;
+        }
+    }
+}
+
 .site-footer {
     width: 100%;
     clear: left;
