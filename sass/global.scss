@@ -354,6 +354,42 @@ ul {
     margin-right: 1em;
 }
 
+.reveal-all {
+    display: inline-block;
+    width: auto;
+    position: relative;
+    right: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    color: $colour_dark_grey;
+    padding-left: 1em;
+    &:after {
+        content: "+";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        text-align: center;
+        color: #787774;
+        -webkit-transition: -webkit-transform 0.2s ease-out;
+        -moz-transition: -moz-transform 0.2s ease-out;
+        -o-transition: -o-transform 0.2s ease-out;
+        transition: transform 0.2s ease-out;
+    }
+    &.revealed {
+        &:after {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transition: -webkit-transform 0.2s ease-out;
+            -moz-transition: -moz-transform 0.2s ease-out;
+            -o-transition: -o-transform 0.2s ease-out;
+            transition: transform 0.2s ease-out;
+        }
+    }
+}
 
 .reveal-on-click {
     border: 1px solid $colour_borders;
