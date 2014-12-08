@@ -214,6 +214,13 @@ ul {
     background-color: $colour_brand;
 }
 
+.site-notice {
+  border: 0.2em solid #ffcc00;
+  background-color: #ffff99;
+  padding: 0.4em;
+  text-align: center;
+}
+
 .page {
     @extend .container;
 }
