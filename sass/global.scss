@@ -442,10 +442,36 @@ table.table td {
 }
 
 .attention-box {
-    // #todo: style these various boxes
     padding: 1em;
-    border: 1px solid $colour_borders;
     margin-bottom: 1.2em;
+    border-radius: 3px;
+    background-color: mix(#fff, $colour_blue, 85%);
+
+    &.info {
+      background-color: mix(#fff, $colour_blue, 85%);
+    }
+
+    &.helpful-hint {
+      background-color: mix(#fff, $colour_yellow, 75%);
+    }
+
+    &.warning {
+      background-color: mix(#fff, $colour_red, 85%);
+    }
+
+    & > :first-child {
+      margin-top: 0;
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
+
+    code {
+      // code samples should pick up background colour of parent
+      border-color: rgba(#ccc, 0.5);
+      background: rgba(#fff, 0.5);
+    }
 }
 
 .definitions {
