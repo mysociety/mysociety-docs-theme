@@ -261,6 +261,24 @@ ul {
     }
 }
 
+.breadcrumb {
+    @extend .unstyled-list;
+    padding: $base-spacing-unit /4 0;
+    li {
+        display: inline;
+        font-size: 0.75em;
+        &:after {
+            content: '/';
+            margin: 0 0.33em;
+            color: $colour_light_grey;
+        }
+        a {
+            color: $colour_dark_grey
+        }
+    }
+
+ }
+
 .sidebar {
     ul {
         @extend .unstyled-list;
@@ -343,6 +361,42 @@ ul {
     margin-right: 1em;
 }
 
+.reveal-all {
+    display: inline-block;
+    width: auto;
+    position: relative;
+    right: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    color: $colour_dark_grey;
+    padding-left: 1em;
+    &:after {
+        content: "+";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        text-align: center;
+        color: #787774;
+        -webkit-transition: -webkit-transform 0.2s ease-out;
+        -moz-transition: -moz-transform 0.2s ease-out;
+        -o-transition: -o-transform 0.2s ease-out;
+        transition: transform 0.2s ease-out;
+    }
+    &.revealed {
+        &:after {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transition: -webkit-transform 0.2s ease-out;
+            -moz-transition: -moz-transform 0.2s ease-out;
+            -o-transition: -o-transform 0.2s ease-out;
+            transition: transform 0.2s ease-out;
+        }
+    }
+}
 
 .reveal-on-click {
     border: 1px solid $colour_borders;
@@ -561,3 +615,86 @@ table.table td {
    margin-left: 0em;
 }
 
+.glossary__link {
+    display: inline-block;
+    color: $colour_dark_grey;
+    text-decoration: underline;
+    position: relative;
+    padding-left: .5em;
+    &:before {
+        content: '#';
+        opacity: 0.5;
+        text-decoration: none;
+        position: absolute;
+        left: 0;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        color: $colour_black;
+        &:before {
+            opacity: 1;
+        }
+    }
+}
+
+.site-footer {
+    width: 100%;
+    clear: left;
+    background: $colour_black;
+    padding: $base-spacing-unit 0;
+    @include clearfix;
+    .column {
+        @include grid-column--one-of-two;
+        @media (min-width: $medium-screen) {
+            @include grid-column--one-of-four;
+        }
+        @media (min-width: $large-screen) {
+            @include grid-column--one-of-five;
+        }
+    }
+    // This, plus the default float right on .central, means that the last
+    // column fits in the nice gap left by the long .central column
+    .column:last-child {
+        h3 {
+            margin-top: 1em;
+        }
+        @media (min-width: $medium-screen) {
+            h3 {
+                margin-top: 0;
+            }
+        }
+    }
+    .central {
+        float: right;
+        @media (min-width: $medium-screen) {
+            ul {
+                @include columns(1);
+            }
+            @include grid-column--two-of-four;
+        }
+        @media (min-width: $mediumish-screen) {
+            ul {
+                @include columns(2);
+            }
+            @include grid-column--two-of-four;
+        }
+        @media (min-width: $large-screen) {
+            ul {
+                @include columns(3);
+            }
+            @include grid-column--three-of-five;
+        }
+    }
+    h3 {
+        font-size: 1em;
+        font-weight: normal;
+        margin-bottom: 0;
+        color: #888;
+    }
+    ul {
+        margin: 0;
+        @extend .unstyled;
+    }
+    a {color: #eeeeee;}
+}
