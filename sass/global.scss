@@ -646,6 +646,10 @@ table.table td {
     }
 }
 
+.with-border {
+    border: 1px solid $colour_borders;
+}
+
 .site-footer {
     width: 100%;
     clear: left;
