@@ -143,12 +143,11 @@ blockquote {
 /* To avoid floaty footer, make background footer colour */
 .page-wrapper {
     background: $colour_background;
-    float: left;
-    width: 100%;
+    @include clearfix();
 }
 .page-wrapper--white {
-    width: 100%;
     background: #fff;
+    @include clearfix();
 }
 
 /* mySociety header */
