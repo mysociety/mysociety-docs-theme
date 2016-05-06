@@ -229,6 +229,7 @@ blockquote {
 
 .page {
     @extend .container;
+    @include clearfix();
 }
 
 .main-content-column {
@@ -707,6 +708,17 @@ table.table td {
         @extend .unstyled;
     }
     a {color: #eeeeee;}
+}
+
+@import "mysoc_footer";
+@import "mysoc_footer_grid";
+
+// Browser default margin-top messes up spacing,
+// and we don’t need it in the footer anyway.
+.mysoc-footer {
+  p {
+    margin-top: 0;
+  }
 }
 
 @import 'print';
