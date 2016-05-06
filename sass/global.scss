@@ -140,7 +140,6 @@ blockquote {
     font-style: italic;
 }
 
-/* To avoid floaty footer, make background footer colour */
 .page-wrapper {
     background: $colour_background;
     @include clearfix();
