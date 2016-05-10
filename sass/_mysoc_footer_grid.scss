@@ -15,6 +15,7 @@ $grid-breakpoint-sm: $mysoc-footer-breakpoint-sm;
   %col {
     padding-left: $grid-gutter / 2;
     padding-right: $grid-gutter / 2;
+    min-height: 1px;
   }
 
   @for $i from 1 through 12 {
