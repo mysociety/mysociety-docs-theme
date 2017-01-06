@@ -233,7 +233,7 @@ blockquote {
 }
 
 .main-content-column {
-    padding-left: 0 !Important;
+    padding-left: 0 !important;
     @media (min-width: $large-screen) {
         @include grid-column--three-of-four;
     }
