@@ -2,11 +2,12 @@
 @import 'variables';
 @import 'mixins';
 @import 'pygment_trac';
-@import '../../assets/sass/config';
 
 *, *:before, *:after {
-  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
- }
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 html {
     height: 100%;

@@ -30,29 +30,29 @@ $medium-screen: 30em;
 $base-spacing-unit: 32px;
 
 
-// These *should always* be overridden in _config.scss
+// These *should always* be overridden
 
 $logo_path: "../../theme/img/fixmystreet-logo.svg" !default;
 $logo_height: 60px !default;
 $logo_width: 320px !default;
 
 
-// These footer settings *can* be overridden in _config.scss
+// These footer settings *can* be overridden
 
-$mysoc-footer-background-color: $colour_black;
-$mysoc-footer-text-color: #acacac;
-$mysoc-footer-site-name-text-color: #fff;
+$mysoc-footer-background-color: $colour_black !default;
+$mysoc-footer-text-color: #acacac !default;
+$mysoc-footer-site-name-text-color: #fff !default;
 
-$mysoc-footer-link-text-color: #fff;
-$mysoc-footer-link-hover-text-color: #fff;
+$mysoc-footer-link-text-color: #fff !default;
+$mysoc-footer-link-hover-text-color: #fff !default;
 
-$mysoc-footer-divider-color: #4b4b4b;
+$mysoc-footer-divider-color: #4b4b4b !default;
 
-$mysoc-footer-donate-background-color: lighten($colour_black, 5%);
-$mysoc-footer-donate-text-color: #fff;
-$mysoc-footer-donate-button-background-color: #E04B4B;
+$mysoc-footer-donate-background-color: lighten($colour_black, 5%) !default;
+$mysoc-footer-donate-text-color: #fff !default;
+$mysoc-footer-donate-button-background-color: #E04B4B !default;
 
-$mysoc-footer-legal-text-color: #9a9a9a;
+$mysoc-footer-legal-text-color: #9a9a9a !default;
 
-$mysoc-footer-image-path: '../../theme/img/mysoc-footer/';
-$mysoc-footer-breakpoint-sm: $large-screen;
+$mysoc-footer-image-path: '../../theme/img/mysoc-footer/' !default;
+$mysoc-footer-breakpoint-sm: $large-screen !default;
