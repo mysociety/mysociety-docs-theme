@@ -173,10 +173,10 @@ blockquote {
     border-radius: 0 0 0.75em 0.75em;
     background-size: 22px;
     background-position: 11px 7px ;
-    background-image: url('../../theme/img/mysociety-bloom.png');
+    background-image: url("#{$theme_dir}/img/mysociety-bloom.png");
 
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-        background-image: url('../../theme/img/mysociety-bloom@2.png');
+        background-image: url("#{$theme_dir}/img/mysociety-bloom@2.png");
     }
 
     @media (min-width: $medium-screen) {
@@ -184,11 +184,11 @@ blockquote {
         background-position: 16px 10px ;
         background-size: 93px 19px;
         background-repeat: no-repeat;
-        background-image: url('../../theme/img/mysociety-logo.png');
+        background-image: url("#{$theme_dir}/img/mysociety-logo.png");
         width: 125px;
         height: 39px;
         @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-            background-image: url('../../theme/img/mysociety-logo@2.png');
+            background-image: url("#{$theme_dir}/img/mysociety-logo@2.png");
         }
     }
 }
@@ -465,7 +465,7 @@ blockquote {
 }
 
 dl.dir-structure, dl.dir-structure dl {
-    background: url(../../theme/img/tree-last.png) no-repeat;
+    background: url("#{$theme_dir}/img/tree-last.png") no-repeat;
     background-position: 0 -29px;
     padding: 0 0 0 21px;
     margin: 0.5em 0 0 0;
@@ -474,13 +474,13 @@ dl.dir-structure {
     margin-bottom: 1.5em;
 }
 dl.dir-structure dt {
-    background: url(../../theme/img/tree-branch.png) no-repeat;
+    background: url("#{$theme_dir}/img/tree-branch.png") no-repeat;
     background-position: 0 0;
     padding: 20px 0 0 28px;
     margin: 0;
 }
 dl.dir-structure dd {
-    background: url(../../theme/img/tree-upright.png) repeat-y;
+    background: url("#{$theme_dir}/img/tree-upright.png") repeat-y;
     padding: 0 0 0em 40px;
     margin: 0;
 }
@@ -489,7 +489,7 @@ dl.dir-structure dd p {
     padding: 0 0 0.5em 0;
 }
 dl.dir-structure dt.last {
-    background: url(../../theme/img/tree-last.png) no-repeat;
+    background: url("#{$theme_dir}/img/tree-last.png") no-repeat;
 }
 dl.dir-structure dd.last {
     background-image: none;
