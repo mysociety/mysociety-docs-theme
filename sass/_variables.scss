@@ -1,4 +1,4 @@
-$source: "Source Sans Pro", "Helvetica Neue", Arial, Helvetica, serif;
+$source: "Source Sans Pro", "Helvetica Neue", Arial, Helvetica, serif !default;
 
 $colour_orange: #f79421;
 $colour_off_white: #f3f1eb;
@@ -16,18 +16,18 @@ $colour_blue: #54b1e4;
 $colour_blue_dark: #2b8cdb;
 $colour_blue_dark_2: #207cba;
 
-$colour_brand: $colour_yellow;
+$colour_brand: $colour_yellow !default;
 
-$colour_background: $colour_off_white;
-$colour_links: $colour_blue_dark;
-$colour_borders: $colour_light_grey;
+$colour_background: $colour_off_white !default;
+$colour_links: $colour_blue_dark !default;
+$colour_borders: $colour_light_grey !default;
 
-$giant-screen: 77.777777778em;
-$large-screen: 56.888888889em;
-$mediumish-screen: 40em;
-$medium-screen: 30em;
+$giant-screen: 77.777777778em !default;
+$large-screen: 56.888888889em !default;
+$mediumish-screen: 40em !default;
+$medium-screen: 30em !default;
 
-$base-spacing-unit: 32px;
+$base-spacing-unit: 32px !default;
 
 // Depending on where your Sass/CSS files are, and how you've
 // imported mysociety-docs-theme, you might need to change $theme_dir.
