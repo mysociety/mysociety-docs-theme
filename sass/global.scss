@@ -524,7 +524,16 @@ table.table td {
       background-color: mix(#fff, $colour_yellow, 75%);
     }
 
+    &.success {
+      background-color: mix(#fff, $colour_green, 85%);
+    }
+
     &.warning {
+      background-color: mix(#fff, $colour_orange, 85%);
+    }
+
+    &.error,
+    &.danger {
       background-color: mix(#fff, $colour_red, 85%);
     }
 
