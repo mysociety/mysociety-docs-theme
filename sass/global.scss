@@ -510,6 +510,48 @@ table.table td {
     padding: 0.666em;
 }
 
+table.table th[scope="row"] {
+    text-align: left;
+}
+
+table.table--responsive {
+    width: 100%;
+    border-bottom: 0;
+    @media only screen and (max-width:$mediumish-screen ) {
+        table, thead, tbody, th, td, tr { 
+            display: block; 
+        }
+
+        thead tr { 
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        th[scope="row"] {
+            border: 0;
+            border-bottom: 1px solid #ccc;
+
+        }
+	
+        td { 
+            /* Behave  like a "row" */
+            border: 0;
+            border-bottom: 1px solid #ccc;
+            position: relative;
+            text-align: left;
+        }
+        
+        td:before { 
+            /* Now like a table header */
+            position: static;
+            display: block;
+            content: attr(data-label);
+            font-weight: bold;
+        }
+    }
+}
+
 .attention-box {
     padding: 1em;
     margin-bottom: 1.2em;
