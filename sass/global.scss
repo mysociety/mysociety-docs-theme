@@ -327,6 +327,10 @@ blockquote {
     }
 }
 
+.site-search {
+    min-height: 1.6875em; //27px (stops the bar lazy load making the content below move down the page)
+}
+
 .list-of-blog-posts {
     @extend .unstyled-list;
 }
