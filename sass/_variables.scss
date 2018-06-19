@@ -1,20 +1,24 @@
 $source: "Source Sans Pro", "Helvetica Neue", Arial, Helvetica, serif !default;
 
-$colour_orange: #f79421;
+$colour_orange: #f4a140;
+$colour_blue: #4faded;
+$colour_green: #62b356;
+$colour_yellow: #ffd836;
+$colour_red: #e04b4b;
+$colour_violet: #a94ca6;
+$colour_purple: #5c377f;
 $colour_off_white: #f3f1eb;
-$colour_light_grey: #e4e3dd;
-$colour_dark_grey: #787774;
+$colour_light_grey: #e2dfd9;
+$colour_mid_grey: #959287;
+$colour_dark_grey: #6c6b68;
 $colour_black: #333333;
-$colour_red: #dd4e4d;
-$colour_yellow: #fff066;
 
-$colour_green: #61b252;
-$colour_green_dark: #53a044;
-$colour_green_dark_2: #388924;
 
-$colour_blue: #54b1e4;
-$colour_blue_dark: #2b8cdb;
-$colour_blue_dark_2: #207cba;
+$colour_green_dark: darken($colour_green, 10%);
+$colour_green_dark_2: darken($colour_green, 13%);
+
+$colour_blue_dark: darken($colour_blue, 10%);
+$colour_blue_dark_2: darken($colour_blue, 15%);
 
 $colour_brand: $colour_yellow !default;
 
