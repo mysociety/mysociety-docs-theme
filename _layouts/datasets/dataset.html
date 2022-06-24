@@ -9,8 +9,11 @@ layout: default
 {{page.description}}
 
 <ul class="dataset-composite-options">
-    <li><a href="{{ site.baseurl }}/downloads/{{page.composite.xlsx}}/">Download as Excel file (xlsx)</a></li>
-    <li><a href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl }}/data/{{page.name}}/{{page.name}}.sqlite">Explore
+    <li><a href="{{ site.baseurl }}/downloads/{{page.name | replace: '_', '-' }}-xlsx/{{page.version}}">Download as
+            Excel file
+            (xlsx)</a></li>
+    <li><a
+            href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
             data in Datasette</a></li>
 </ul>
 
@@ -71,7 +74,7 @@ layout: default
 
 <p>Description: {{resource.description}}</p>
 
-<p><a href="{{ site.baseurl }}/downloads/{{resource.download_id }}/">Download {{resource.format |
+<p><a href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version}}">Download {{resource.format |
         upcase }}</a></p>
 
 
