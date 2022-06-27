@@ -97,7 +97,8 @@ layout: default
 
 <p>Description: {{resource.description}}</p>
 
-<p><a href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version}}">Download {{resource.format |
+<p><a href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version| replace: '.', '_'}}">Download
+        {{resource.format |
         upcase }}</a></p>
 
 
