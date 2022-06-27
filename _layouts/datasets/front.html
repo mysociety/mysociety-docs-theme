@@ -4,9 +4,9 @@ layout: default
 
 {{ content }}
 
-<h1>Datasets</h1>
+<h2>Datasets</h2>
 
-{% assign latest = site.datasets | where: "version", "latest" %}
+{% assign latest = site.datasets | where: "version", "latest" | sort: "custom.dataset_order" %}
 
 <ul>
     {% for dataset in latest %}

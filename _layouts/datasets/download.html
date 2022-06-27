@@ -11,14 +11,15 @@ layout: default
 
 <p><a href="{{package.url | prepend:site.baseurl }}">Return to data package page.</a></p>
 
+<p>Version: <b>{{ page.version }}</b>
 
-{% if page.download_gate_type == "soft" %}
+    {% if page.download_gate_type == "soft" %}
 
 <h2>Download the file</h2>
 
 <ul>
     <li>
-        <p><a href="{{ page.file | prepend: site.baseurl  }}">Download {{ page.filename }}</a>
+        <p><a href="{{ page.file | prepend: site.baseurl  }}" download>Download {{ page.filename }}</a>
         </p>
     </li>
 </ul>
@@ -31,11 +32,14 @@ layout: default
 
 {% assign escaped_file = page.file | prepend: site.baseurl | prepend: site.url | urlencode | replace: ":", "%3A" %}
 
-{% capture survey_url %}https://survey.alchemer.com/s3/{{survey_code}}?dataset_slug={{package.name}}&download_link={{escaped_file}}{% endcapture %}
+{% capture survey_url
+%}https://survey.alchemer.com/s3/{{survey_code}}?dataset_slug={{package.name}}&download_link={{escaped_file}}{%
+endcapture %}
 
-{% assign current_url = page.url  | prepend: site.baseurl | prepend: site.url | urlescape | replace: ":", "%3A" %}
+{% assign current_url = page.url | prepend: site.baseurl | prepend: site.url | urlescape | replace: ":", "%3A" %}
 
-<script type="text/javascript" >document.write('<script src="{{ survey_url }}&__no_style=true&__output=embedjs&__ref=' + escape(document.location.href) + '" type="text/javascript" ></scr' + 'ipt>');</script>
+<script
+    type="text/javascript">document.write('<script src="{{ survey_url }}&__no_style=true&__output=embedjs&__ref=' + escape(document.location.href) + '" type="text/javascript" ></scr' + 'ipt>');</script>
 
 <noscript>
     <a href="{{ survey_url }}&jsfallback=true">Follow this link to get to the survey.</a>

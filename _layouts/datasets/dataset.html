@@ -4,16 +4,39 @@ layout: default
 <h1>Dataset: {{page.title}}</h1>
 
 
+{% assign latest = site.datasets | where: "version", "latest" | where: "name", page.name %}
+{% assign latest = latest[0] %}
+
+{% if latest.full_version != page.full_version %}
+
+<p>Version: <b>{{ page.full_version }}</b>. This is not the <a
+        href="{{ latest.permalink | prepend: site.baseurl }}">latest version</a> of
+    this document. <a href="versions">See all versions</a>.</p>
+
+{% else %}
+
+<p>Version: <b>{{ page.full_version }}</b>. This is the latest version. <a href="versions">See all versions</a>.</p>
+
+{% endif %}
+
+<h2>Description</h2>
+
 {{ content }}
 
-{{page.description}}
+<p>{{page.description}}</p>
+
+<H2>Download options</H2>
 
 <ul class="dataset-composite-options">
-    <li><a href="{{ site.baseurl }}/downloads/{{page.name | replace: '_', '-' }}-xlsx/{{page.version}}">Download as
+    <li><a href="{{ site.baseurl }}/downloads/{{page.name }}_xlsx/{{page.version | replace: '.', '_'}}">Download
+            as
             Excel file
             (xlsx)</a></li>
-    <li><a
-            href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
+    <li><a href="{{ site.baseurl }}/downloads/{{page.name }}_json/{{page.version  | replace: '.', '_'}}">Download
+            Json file</a>
+    </li>
+    <li> <a href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl
+    }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
             data in Datasette</a></li>
 </ul>
 
@@ -99,5 +122,18 @@ layout: default
     </tr>
     {% endfor %}
 </table>
-
 {% endfor %}
+
+{% if page.custom.change_log %}
+
+<br>
+<h2> Change log</h2>
+
+{% for c in page.custom.change_log reversed %}
+<h3>{{c[0]}}</h3>
+<p>{{c[1]}}</p>
+{% endfor %}
+
+</ul>
+
+{% endif %}
