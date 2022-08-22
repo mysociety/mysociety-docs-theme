@@ -28,16 +28,23 @@ layout: default
 <H2>Download options</H2>
 
 <ul class="dataset-composite-options">
+    {% if page.custom.composite.xlsx.render == true %}
     <li><a href="{{ site.baseurl }}/downloads/{{page.name }}_xlsx/{{page.version | replace: '.', '_'}}">Download
             as
             Excel file
             (xlsx)</a></li>
+    {% endif %}
+    {% if page.custom.composite.json.render == true %}
     <li><a href="{{ site.baseurl }}/downloads/{{page.name }}_json/{{page.version  | replace: '.', '_'}}">Download
             Json file</a>
     </li>
+    {% endif %}
+    {% if page.custom.composite.sqlite.render == true %}
+
     <li> <a href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl
     }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
             data in Datasette</a></li>
+    {% endif %}
 </ul>
 
 {% if page.contributors %}
