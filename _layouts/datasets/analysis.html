@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<style>
+    .dataTables_wrapper {
+        padding-bottom: 30px;
+    }
+</style>
+
+
+{{ content }}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{% for js in page.external_js %}
+<script type="text/javascript" charset="utf8" src="{{ js }}"></script>
+{% endfor %}
+
+<script>
+    $(document).ready(function () {
+        $('table').DataTable({
+            paging: false,
+            ordering: true,
+            info: false,
+        });
+    });
+
+</script>
