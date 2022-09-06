@@ -23,7 +23,7 @@ layout: default
 
 {{ content }}
 
-<p>{{page.description}}</p>
+<p>{{page.description | newline_to_br | replace: "<br />", "<br /><br />" |markdownify }}</p>
 
 <H2>Download options</H2>
 
@@ -92,8 +92,9 @@ layout: default
 
 <ul class="data-resource-list">
     {% for resource in page.resources %}
+    {% assign desc = resource.description | strip | newline_to_br | strip_newlines | split: "<br />" | first | strip | markdownify %}
     <li>
-        <a href="#{{ resource.name }}">{{resource.title}}</a> - {{resource.description}}
+        <a href="#{{ resource.name }}">{{resource.title}}</a> {{desc}}
     </li>
     {% endfor %}
 </ul>
@@ -102,7 +103,7 @@ layout: default
 <a name="{{ resource.name }}"></a>
 <h3>Table: {{resource.title}}</h3>
 
-<p>Description: {{resource.description}}</p>
+<p>Description: {{resource.description | newline_to_br |markdownify}}</p>
 
 <p><a href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version| replace: '.', '_'}}">Download
         {{resource.format |
