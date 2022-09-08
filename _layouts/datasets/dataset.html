@@ -23,7 +23,7 @@ layout: default
 
 {{ content }}
 
-<p>{{page.description}}</p>
+<p>{{page.description | newline_to_br | replace: "<br />", "<br /><br />" |markdownify }}</p>
 
 {% if page.contributors %}
 <h2>Contributors</h2>
@@ -69,18 +69,24 @@ layout: default
 <H2>Download options</H2>
 
 <ul class="dataset-composite-options">
+    {% if page.custom.composite.xlsx.render == true %}
     <li><a class="download-btn"
             href="{{ site.baseurl }}/downloads/{{page.name }}_xlsx/{{page.version | replace: '.', '_'}}">Download
             as
             Excel file
             (xlsx) {% include download_svg.html %} </a></li>
+    {% endif %}
+    {% if page.custom.composite.json.render == true %}
     <li><a class="download-btn"
             href="{{ site.baseurl }}/downloads/{{page.name }}_json/{{page.version  | replace: '.', '_'}}">Download
             Json file {% include download_svg.html %}</a>
     </li>
+    {% endif %}
+    {% if page.custom.composite.sqlite.render == true %}
     <li> <a class="download-btn" href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl
     }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
             data in Datasette {% include download_svg.html %}</a></li>
+    {% endif %}
 </ul>
 
 
@@ -91,8 +97,10 @@ layout: default
 {% if resource_length > 1 %}
 <ul class="data-resource-list">
     {% for resource in page.resources %}
+    {% assign desc = resource.description | strip | newline_to_br | strip_newlines | split: "<br />" | first | strip |
+    markdownify %}
     <li>
-        <a href="#{{ resource.name }}">{{resource.title}}</a> - {{resource.description}}
+        <a href="#{{ resource.name }}">{{resource.title}}</a> {{desc}}
     </li>
     {% endfor %}
 </ul>
@@ -103,7 +111,7 @@ layout: default
 <a name="{{ resource.name }}"></a>
 <h3>Table: {{resource.title}}</h3>
 
-<p>Description: {{resource.description}}</p>
+<p>Description: {{resource.description | newline_to_br |markdownify}}</p>
 
 <p style="max-width: 24em;"><a class="download-btn"
         href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version| replace: '.', '_'}}">Download

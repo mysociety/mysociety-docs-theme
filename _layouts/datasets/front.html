@@ -4,14 +4,33 @@ layout: default
 
 {{ content }}
 
+{% assign dataset_size = site.datasets | size %}
+{% if dataset_size > 0 %}
 <h2>Datasets</h2>
+{% endif %}
 
 {% assign latest = site.datasets | where: "version", "latest" | sort: "custom.dataset_order" %}
 
 <ul>
     {% for dataset in latest %}
+    {% assign desc = dataset.description | strip | newline_to_br | strip_newlines | split: "<br />" | first | markdownify  %}
     <li>
-        <a href="{{ dataset.url | prepend:site.baseurl }}">{{ dataset.title }}</a> - {{ dataset.description }}
+        <a href="{{ dataset.url | prepend:site.baseurl }}">{{ dataset.title }}</a> {{ desc }}
+    </li>
+    {% endfor %}
+</ul>
+
+{% assign analysis_size = site.analysis | size %}
+
+{% if analysis_size > 0 %}
+<h2>Analysis</h2>
+{% endif %}
+
+<ul>
+    {% for analysis in site.analysis %}
+    <li>
+        <a href="{{ analysis.url | prepend:site.baseurl }}">{{ analysis.title }}</a>{% if analysis.description %} - {{
+        analysis.description }}{% endif %}
     </li>
     {% endfor %}
 </ul>
