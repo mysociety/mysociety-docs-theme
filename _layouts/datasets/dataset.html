@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<h1>Dataset: {{page.title}}</h1>
+<h1>{{page.title}}</h1>
 
 
 {% assign latest = site.datasets | where: "version", "latest" | where: "name", page.name %}
@@ -24,21 +24,6 @@ layout: default
 {{ content }}
 
 <p>{{page.description}}</p>
-
-<H2>Download options</H2>
-
-<ul class="dataset-composite-options">
-    <li><a href="{{ site.baseurl }}/downloads/{{page.name }}_xlsx/{{page.version | replace: '.', '_'}}">Download
-            as
-            Excel file
-            (xlsx)</a></li>
-    <li><a href="{{ site.baseurl }}/downloads/{{page.name }}_json/{{page.version  | replace: '.', '_'}}">Download
-            Json file</a>
-    </li>
-    <li> <a href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl
-    }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
-            data in Datasette</a></li>
-</ul>
 
 {% if page.contributors %}
 <h2>Contributors</h2>
@@ -81,8 +66,29 @@ layout: default
 
 {% endif %}
 
+<H2>Download options</H2>
+
+<ul class="dataset-composite-options">
+    <li><a class="download-btn"
+            href="{{ site.baseurl }}/downloads/{{page.name }}_xlsx/{{page.version | replace: '.', '_'}}">Download
+            as
+            Excel file
+            (xlsx) {% include download_svg.html %} </a></li>
+    <li><a class="download-btn"
+            href="{{ site.baseurl }}/downloads/{{page.name }}_json/{{page.version  | replace: '.', '_'}}">Download
+            Json file {% include download_svg.html %}</a>
+    </li>
+    <li> <a class="download-btn" href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl
+    }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
+            data in Datasette {% include download_svg.html %}</a></li>
+</ul>
+
+
+
 <h2>Individual tables</h2>
 
+{% assign resource_length = page.resources | length %}
+{% if resource_length > 1 %}
 <ul class="data-resource-list">
     {% for resource in page.resources %}
     <li>
@@ -91,15 +97,18 @@ layout: default
     {% endfor %}
 </ul>
 
+{% endif %}
+
 {% for resource in page.resources %}
 <a name="{{ resource.name }}"></a>
 <h3>Table: {{resource.title}}</h3>
 
 <p>Description: {{resource.description}}</p>
 
-<p><a href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version| replace: '.', '_'}}">Download
+<p style="max-width: 24em;"><a class="download-btn"
+        href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version| replace: '.', '_'}}">Download
         {{resource.format |
-        upcase }}</a></p>
+        upcase }} {% include download_svg.html %}</a></p>
 
 
 <h4>Data description</h4>
