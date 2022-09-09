@@ -18,8 +18,14 @@ layout: default
 
 <ul class="dataset-composite-options">
     <li>
-        <p><a class="download-btn" href="{{ page.file | prepend: site.baseurl  }}" download>Download {{ page.filename
+        <p><a class="download-btn download-link" href="{{ page.file | prepend: site.baseurl  }}" download>Download {{
+                page.filename
                 }} {% include download_svg.html %}</a>
+        </p>
+        <p><a class="download-btn code-button" href="#code-example">Integrate with code</a>
+        </p>
+        <p><a class="download-btn subscribe-button" href="{{ page.file | prepend: site.baseurl  }}">Sign up for data
+                updates</a>
         </p>
     </li>
 </ul>
@@ -29,6 +35,91 @@ layout: default
 <p><a href="{{package.url | prepend:site.baseurl }}">Return to data package page.</a></p>
 
 
+<a name="code-example"></a>
+<div class="code-div hidden-div">
+    <hr>
+    <h2> Integrating with code</h2>
+
+    <h3>Using Python</h3>
+
+    <p>Install the <a href="https://pypi.org/project/mysoc-dataset/">mysoc-dataset package</a>.
+        You can then use the
+        following code to get this file.</p>
+
+    <pre><code class="language-python">
+        from mysoc_dataset import get_dataset_url, get_dataset_df
+
+        # get the url of dataset
+        url = get_dataset_url(
+            repo_name="{{site.baseurl | slice: 1,100 }}",
+            package_name="{{page.package}}",
+            version_name="{{page.version}}",
+            file_name="{{page.filename}}",
+        )
+        
+        # get a pandas dataframe
+        df = get_dataset_df(
+            repo_name="{{site.baseurl | slice: 1,100 }}",
+            package_name="{{page.package}}",
+            version_name="{{page.version}}",
+            file_name="{{page.filename}}",
+        )
+      </code></pre>
+
+    <p>You can also use this package as <a href="https://github.com/mysociety/mysoc-dataset#as-a-cli">a command-line
+            tool</a>:</p>
+
+    <pre><code class="language-bash">
+        mysoc-dataset download \
+        --repo {{site.baseurl | slice: 1,100 }} \
+        --package {{page.package}} \
+        --version {{page.version}} \
+        --file {{page.filename}}
+      </code></pre>
+
+    <p>Use <code>mysoc-dataset --help</code> for all options.</p>
+
+</div>
+
+<a name="subscribe"></a>
+<div class="colour-red search-box subscribe-div hidden-div">
+    <hr>
+    <h2>Subscribe to data updates</h2>
+    This mailing list will keep you up to date with new dataset releases, or with important updates to existing
+    datasets.
+
+
+    <form style="max-width: 24em;padding-top:20px"
+        action="//mysociety.us9.list-manage.com/subscribe/post?u=53d0d2026dea615ed488a8834&amp;id=287dc28511"
+        method="POST">
+        <div style="position: absolute; left: -5000px;">
+            <input name="b_53d0d2026dea615ed488a8834_287dc28511" tabindex="-1" value="" type="text">
+        </div>
+        <input name="group[11745][256]" value="1" type="hidden">
+        <div class="inline-input">
+            <input name="EMAIL" placeholder="you@email.com" aria-label="Email address" type="email">
+        </div>
+        <div class="inline-button">
+            <input type="submit" class="button" name="subscribe" value="Subscribe"
+                onclick="ga('send', 'event', 'Newsletter Page', 'newsletter signup', '')">
+        </div>
+        <p>
+            <label>
+                <input name="group[11745][32]" value="1" type="checkbox"
+                    style="vertical-align: 0.1em; margin-right: 0.3em;">
+                Also sign up to general mySociety news
+            </label>
+        </p>
+    </form>
+</div>
+
+<script>
+    //before the page finshes loading, set display:none on hidden-div
+    var hiddenDivs = document.getElementsByClassName("hidden-div");
+    for (var i = 0; i < hiddenDivs.length; i++) {
+        hiddenDivs[i].style.display = "none";
+    }
+</script>
 
 <hr style="padding-bottom:10px">
 <a name="survey"></a>
@@ -57,12 +148,19 @@ endcapture %}
     }
 </style>
 
+
+
+<!-- load theme/js/prism/js script-->
+<script src="{{ site.baseurl }}/theme/js/prism.js"></script>
+
 <script>
+
+
     // if .download-btn is clicked, allow the download event to happen
     // wait half a second 
     // enable smooth scroll for the page,
     //  smooth scroll to the #survey anchor
-    document.querySelectorAll('.download-btn').forEach(function (el) {
+    document.querySelectorAll('.download-link').forEach(function (el) {
         el.addEventListener('click', function (e) {
             setTimeout(function () {
                 document.querySelector('html').style.scrollBehavior = 'smooth';
@@ -71,5 +169,24 @@ endcapture %}
         });
     });
 
+    // if the code button is clicked, do not follow the link show the #code-div and scroll to #code-example
+    document.querySelectorAll('.code-button').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector('.code-div').style.display = 'block';
+            document.querySelector('html').style.scrollBehavior = 'smooth';
+            window.location.hash = '#code-example';
+        });
+    });
+
+    // if the subscribe button is clicked, do not follow the link show the #subscribe-div and scroll to #subscribe
+    document.querySelectorAll('.subscribe-button').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector('.subscribe-div').style.display = 'block';
+            document.querySelector('html').style.scrollBehavior = 'smooth';
+            window.location.hash = '#subscribe';
+        });
+    });
 
 </script>
