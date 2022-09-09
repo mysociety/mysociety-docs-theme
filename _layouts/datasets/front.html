@@ -13,9 +13,10 @@ layout: default
 
 <ul>
     {% for dataset in latest %}
-    {% assign desc = dataset.description | strip | newline_to_br | strip_newlines | split: "<br />" | first | markdownify  %}
+    {% assign desc = dataset.description | strip | newline_to_br | strip_newlines | split: "<br />" | first |
+    markdownify | remove: '<p>' | remove: '</p>' %}
     <li>
-        <a href="{{ dataset.url | prepend:site.baseurl }}">{{ dataset.title }}</a> {{ desc }}
+        <p><a href="{{ dataset.url | prepend:site.baseurl }}">{{ dataset.title }}</a> - {{ desc }}</p>
     </li>
     {% endfor %}
 </ul>
