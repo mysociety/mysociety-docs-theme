@@ -83,8 +83,8 @@ layout: default
     </li>
     {% endif %}
     {% if page.custom.composite.sqlite.render == true %}
-    <li> <a class="download-btn" href="https://lite.datasette.io/?url={{site.url}}{{ site.baseurl
-    }}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
+    <li> <a class="download-btn"
+            href="https://lite.datasette.io/?url={{site.url | replace: 'http://', 'https://' }}{{ site.baseurl}}/data/{{page.name}}/{{page.version}}/{{page.name}}.sqlite">Explore
             data in Datasette {% include download_svg.html %}</a></li>
     {% endif %}
 </ul>
