@@ -113,11 +113,14 @@ layout: default
 
 <p>Description: {{resource.description | newline_to_br |markdownify}}</p>
 
+{% for download_option in page.custom.formats %}
+{% if download_option[1] == true %}
 <p style="max-width: 24em;"><a class="download-btn"
-        href="{{ site.baseurl }}/downloads/{{resource.download_id }}/{{page.version| replace: '.', '_'}}">Download
-        {{resource.format |
+        href="{{ site.baseurl }}/downloads/{{page.name| replace: '_', '-'}}-{{resource.name| replace: '_', '-'}}-{{download_option[0]}}/{{page.version| replace: '.', '_'}}">Download
+        {{download_option[0] |
         upcase }} {% include download_svg.html %}</a></p>
-
+{% endif %}
+{% endfor %}
 
 <h4>Data description</h4>
 
