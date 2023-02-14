@@ -18,13 +18,13 @@ layout: default
 
 <ul class="dataset-composite-options">
     <li>
-        <p><a class="download-btn download-link" href="{{ page.file | prepend: site.baseurl  }}" download>Download {{
+        <p><a class="download-btn download-link" href="{{ page.file | prepend: site.baseurl  | replace: 'http://', 'https://'  }}" download>Download {{
                 page.filename
                 }} {% include download_svg.html %}</a>
         </p>
         <p><a class="download-btn code-button" href="#code-example">Integrate with code</a>
         </p>
-        <p><a class="download-btn subscribe-button" href="{{ page.file | prepend: site.baseurl  }}">Sign up for data
+        <p><a class="download-btn subscribe-button" href="{{ page.file | prepend: site.baseurl  | replace: 'http://', 'https://'  }}">Sign up for data
                 updates</a>
         </p>
     </li>
