@@ -3,7 +3,9 @@ layout: default
 ---
 
 {% assign package = site.datasets | where:"name", page.package | first %}
-
+{% assign file_ext = page.filename | split: "." | last %}
+{% assign all_geo_files = "parquet,gpkg,geojson" | split: "," %}
+{% assign geo_files = "gpkg,geojson" | split: "," %}
 {{ content }}
 
 
@@ -18,13 +20,15 @@ layout: default
 
 <ul class="dataset-composite-options">
     <li>
-        <p><a class="download-btn download-link" href="{{ page.file | prepend: site.baseurl  | replace: 'http://', 'https://'  }}" download>Download {{
+        <p><a class="download-btn download-link"
+                href="{{ page.file | prepend: site.baseurl  | replace: 'http://', 'https://'  }}" download>Download {{
                 page.filename
                 }} {% include download_svg.html %}</a>
         </p>
         <p><a class="download-btn code-button" href="#code-example">Integrate with code</a>
         </p>
-        <p><a class="download-btn subscribe-button" href="{{ page.file | prepend: site.baseurl  | replace: 'http://', 'https://'  }}">Sign up for data
+        <p><a class="download-btn subscribe-button"
+                href="{{ page.file | prepend: site.baseurl  | replace: 'http://', 'https://'  }}">Sign up for data
                 updates</a>
         </p>
     </li>
@@ -57,6 +61,15 @@ layout: default
             file_name="{{page.filename}}",
         )
         
+        {% if package.custom.is_geodata and all_geo_files contains file_ext %}
+        # if working with geodata
+        import geopandas as gdp
+        {% if geo_files contains file_ext %}
+        gdf = gdp.from_file(url)
+        {% else %}
+        gdf = gdp.from_parquet(url)
+        {% endif %}
+        {% else %}
         # get a pandas dataframe
         df = get_dataset_df(
             repo_name="{{site.baseurl | slice: 1,100 }}",
@@ -64,6 +77,7 @@ layout: default
             version_name="{{page.version}}",
             file_name="{{page.filename}}",
         )
+        {% endif %}
       </code></pre>
 
     <p>You can also use this package as <a href="https://github.com/mysociety/mysoc-dataset#as-a-cli">a command-line
